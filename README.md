@@ -8,3 +8,9 @@ Usage
 -----
 
 Just install and activate as regular Wordpress plugin.
+
+TODO
+----
+
+* delete generated images on plugin deactivation (or deleting).
+* delete generated images on post delete.
