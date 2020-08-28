@@ -71,6 +71,8 @@ class WebpGenerator {
 			? $this->saveWebpToFile( $imageResource, $webpPath, $this->imageQuality )
 			: false;
 
+		imagedestroy( $imageResource );
+
 		$urlToReturn = ( $generatedAndSaved ) ? $webpUrl : $srcUrl;
 
 		return $urlToReturn;
@@ -95,6 +97,9 @@ class WebpGenerator {
 			$imageResource = imagecreatefromjpeg( $srcPath );
 		} elseif ( $srcExtension === 'png' ) {
 			$imageResource = imagecreatefrompng( $srcPath );
+			imagepalettetotruecolor( $imageResource );
+			imagealphablending( $imageResource, true );
+			imagesavealpha( $imageResource, true );
 		} else {
 			// TODO add some warning log
 		}
